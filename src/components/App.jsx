@@ -3,8 +3,18 @@ import FeedbackOptions from './FeedbackOptions'
 import Statistics from "./Statistics";
 import Section from "./Section/";
 import Notification from "./Notification";
+import styled from "styled-components"
 
-
+const Container = styled.div`
+  background-color: #f4afaf;
+  padding: 20px;
+  width: 350px;
+  border-radius: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+`
 export default class App extends Component {
   state = {
     good: 0,
@@ -39,7 +49,7 @@ export default class App extends Component {
   countPositiveFeedbackPercentage = () => {
     const total = this.countTotalFeedback();
     const positivProc = this.state.good * 100 / total;
-    return positivProc;
+    return positivProc.toFixed(2);
   }
 
   render() {
@@ -48,8 +58,8 @@ export default class App extends Component {
     const {bad} = this.state
 
   return (
-    <div>
-      <Section title = "Please leave feedback">
+    <Container>
+      <Section title = "Please leave feedback" >
         <FeedbackOptions onGoodCounter = {this.goodCounter} 
                           onNeutralCounter ={this.neutralCounter}   
                           onBadCounter = {this.badCounter}/>
@@ -65,7 +75,7 @@ export default class App extends Component {
        </Section> 
        : <Notification message = "There is no feedback"></Notification>}
      
-    </div>
+    </Container>
   );
    }
 };
