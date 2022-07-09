@@ -2,18 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ButtonList, FededbackButton } from './FeedbackOptions.styled';
 
-const FeedbackOptions = ({ onGoodCounter, onNeutralCounter, onBadCounter }) => {
+const FeedbackOptions = ({ onLeaveFeedback, options }) => {
   return (
     <ButtonList>
-      <li>
-        <FededbackButton onClick={onGoodCounter}>Good</FededbackButton>
-      </li>
-      <li>
-        <FededbackButton onClick={onNeutralCounter}>Neutral</FededbackButton>
-      </li>
-      <li>
-        <FededbackButton onClick={onBadCounter}>Bad</FededbackButton>
-      </li>
+      {Object.keys(options).map(btn => {
+        return (
+          <li key={btn}>
+            <FededbackButton name={btn} onClick={onLeaveFeedback}>
+              {btn}
+            </FededbackButton>
+          </li>
+        );
+      })}
     </ButtonList>
   );
 };

@@ -12,21 +12,10 @@ export default class App extends Component {
     bad: 0,
   };
 
-  goodCounter = () => {
-    this.setState(() => {
-      return { good: this.state.good + 1 };
-    });
-  };
-
-  neutralCounter = () => {
-    this.setState(() => {
-      return { neutral: this.state.neutral + 1 };
-    });
-  };
-
-  badCounter = () => {
-    this.setState(() => {
-      return { bad: this.state.bad + 1 };
+  counterFeedback = e => {
+    const button = e.currentTarget.name;
+    this.setState(prevState => {
+      return { [button]: prevState[button] + 1 };
     });
   };
 
@@ -54,9 +43,8 @@ export default class App extends Component {
       <Container>
         <Section title="Please leave feedback">
           <FeedbackOptions
-            onGoodCounter={this.goodCounter}
-            onNeutralCounter={this.neutralCounter}
-            onBadCounter={this.badCounter}
+            options={this.state}
+            onLeaveFeedback={this.counterFeedback}
           />
         </Section>
 
