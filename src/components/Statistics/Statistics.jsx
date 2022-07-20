@@ -3,18 +3,16 @@ import PropTypes from 'prop-types';
 import { FeedbackList, TotalValue } from './Statistics.styled';
 
 const Statistics = ({
-  good,
-  neutral,
-  bad,
+  allFeedback,
   onCountTotalFeedback,
   onCountPositiveFeedbackPercentage,
 }) => {
   return (
     <div>
       <FeedbackList>
-        <li>Good: {good}</li>
-        <li>Neutral: {neutral}</li>
-        <li>Bad: {bad}</li>
+        <li>Good: {allFeedback.good}</li>
+        <li>Neutral: {allFeedback.neutral}</li>
+        <li>Bad: {allFeedback.bad}</li>
       </FeedbackList>
       <TotalValue>
         <p>
