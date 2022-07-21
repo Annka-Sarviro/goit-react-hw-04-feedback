@@ -10,7 +10,15 @@ export default function App() {
   const [neutral, setNeutral] = useState(0);
   const [bad, setBad] = useState(0);
 
-  const allFeedback = { good: good, neutral: neutral, bad: bad };
+  const allFeedback = { good, neutral, bad };
+
+  const countTotalFeedback = () => {
+    return Object.values(allFeedback).reduce((sum, accum) => sum + accum, 0);
+  };
+
+  const countPositiveFeedbackPercentage = Math.round(
+    (allFeedback.good * 100) / countTotalFeedback()
+  );
 
   const counterFeedback = e => {
     const button = e.currentTarget.name;
@@ -28,15 +36,6 @@ export default function App() {
         throw new Error(`Unsuported action type ${button}`);
     }
   };
-
-  const countTotalFeedback = () => {
-    console.log(Object.values(allFeedback));
-    return Object.values(allFeedback).reduce((sum, accum) => sum + accum);
-  };
-
-  const countPositiveFeedbackPercentage = Math.round(
-    (allFeedback.good * 100) / countTotalFeedback()
-  );
 
   return (
     <Container>

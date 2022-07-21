@@ -4,8 +4,8 @@ import { FeedbackList, TotalValue } from './Statistics.styled';
 
 const Statistics = ({
   allFeedback,
-  onCountTotalFeedback,
-  onCountPositiveFeedbackPercentage,
+  countTotalFeedback,
+  countPositiveFeedbackPercentage,
 }) => {
   return (
     <div>
@@ -16,10 +16,10 @@ const Statistics = ({
       </FeedbackList>
       <TotalValue>
         <p>
-          Total: <span>{onCountTotalFeedback}</span>
+          Total: <span>{countTotalFeedback}</span>
         </p>
         <p>
-          Positive feedback: <span>{onCountPositiveFeedbackPercentage}%</span>
+          Positive feedback: <span>{countPositiveFeedbackPercentage}%</span>
         </p>
       </TotalValue>
     </div>
