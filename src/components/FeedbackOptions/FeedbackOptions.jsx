@@ -21,7 +21,6 @@ const FeedbackOptions = ({ onLeaveFeedback, options }) => {
 export default FeedbackOptions;
 
 FeedbackOptions.propTypes = {
-  onGoodCounter: PropTypes.func,
-  onNeutralCounter: PropTypes.func,
-  onBadCounter: PropTypes.func,
+  onLeaveFeedback: PropTypes.func,
+  options: PropTypes.object,
 };

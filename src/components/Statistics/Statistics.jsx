@@ -7,12 +7,13 @@ const Statistics = ({
   countTotalFeedback,
   countPositiveFeedbackPercentage,
 }) => {
+  const { good, neutral, bad } = allFeedback;
   return (
     <div>
       <FeedbackList>
-        <li>Good: {allFeedback.good}</li>
-        <li>Neutral: {allFeedback.neutral}</li>
-        <li>Bad: {allFeedback.bad}</li>
+        <li>Good: {good}</li>
+        <li>Neutral: {neutral}</li>
+        <li>Bad: {bad}</li>
       </FeedbackList>
       <TotalValue>
         <p>
@@ -29,9 +30,12 @@ const Statistics = ({
 export default Statistics;
 
 Statistics.propTypes = {
-  good: PropTypes.number,
-  neutral: PropTypes.number,
-  bad: PropTypes.number,
+  allFeedback: PropTypes.shape({
+    good: PropTypes.number,
+    neutral: PropTypes.number,
+    bad: PropTypes.number,
+  }),
+
   onCountTotalFeedback: PropTypes.number,
   onCountPositiveFeedbackPercentage: PropTypes.number,
 };
